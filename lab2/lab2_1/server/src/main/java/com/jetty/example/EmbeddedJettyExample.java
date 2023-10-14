@@ -16,7 +16,7 @@ public class EmbeddedJettyExample {
  
     public static void main(String[] args) throws Exception {
          
-        Server server = new Server(8680);       
+        Server server = new Server(8681);       
          
         ServletHandler servletHandler = new ServletHandler();
         server.setHandler(servletHandler);
@@ -38,7 +38,12 @@ public class EmbeddedJettyExample {
             String msg = request.getParameter("msg");
             response.setContentType("text/html");
             response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().println("<h1>" + msg + "</h1>");
+            if (msg != null) {
+                response.getWriter().println("<h1>" + msg + "</h1>");
+            }
+            else{
+                response.getWriter().println("<h1>Hello new user!</h1>");
+            }
         } 
 
     }
